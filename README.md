@@ -16,7 +16,7 @@ a market of buyer and seller agents cleared as a double auction. Buyers are sort
 
 1. The market's gain from trade is the largest possible.
 2. No agent loses: every trading buyer values the good at least the price, every trading seller's cost is at most it.
-3. Money is conserved: buyers pay what sellers receive.
+3. Money is conserved: what trading buyers pay, added up buyer by buyer, equals what trading sellers receive, added up seller by seller; and the buyers' and sellers' gains add up to the gain from trade.
 4. Adding a buyer never reduces the number of trades or the gain from trade.
 
 ```sh

@@ -23,4 +23,8 @@ sub([X|Xs], [X|Ys]) :- sub(Xs, Ys).
 sub([_|Xs], Ys) :- sub(Xs, Ys).
 
 % payments(+Market, -Paid-Received): money buyers pay and sellers receive.
-payments(market(K, P, _), Paid-Received) :- ( P == none -> Paid = 0 ; Paid is K * P ), Received = Paid.
+% payments/2 adds up what each trading buyer pays and, separately, what each trading
+% seller receives, so that the money theorem checks the trades rather than a definition.
+payments(market(_, P, Pairs), Paid-Received) :- ( P == none -> Paid = 0, Received = 0 ;
+    foldl([_-_, A0, A]>>( A is A0 + P ), Pairs, 0, Paid),
+    foldl([_-_, A0, A]>>( A is A0 + P ), Pairs, 0, Received0), Received = Received0 ).
